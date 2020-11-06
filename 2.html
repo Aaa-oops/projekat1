@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title>Lazar Mancic Zadatak</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript">
+	function dodajStavku() {
+		var target = document.getElementById("lista");
+		var val = document.getElementById("txtbox").value;
+		if(val == "") {
+			alert("Morate uneti novu stavku");
+		}
+		else {
+			var opt = document.createElement('option');
+			opt.value = val;
+			opt.innerHTML = val;
+			target.appendChild(opt);
+			document.getElementById("txtbox").value = "";
+		}
+	}
+	</script>
+	<style>
+	#forma {
+		width: 300px;
+		height: 120px;
+		background-color: lightgreen;
+		border-radius: 10% 0 10% 0;
+	}
+	#fs {
+		width: 80%
+		height: 80%;
+	}
+	button {
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	</style>
+</head>
+<body>
+	<div id="forma">
+		<fieldset id="fs">
+			<legend>Padajuca Lista</legend>
+			<label for="txtbox">Nova Stavka:</label>
+			<input type="text" id="txtbox" name="txtbox" placeholder="Unesi novu stavku">
+			<br>
+			<button onclick="dodajStavku()">Dodaj Novu Stavku</button>
+			<br>
+			<label for="lista">Lista: </label>
+			<select id="lista" name="lista">
+				<option selected disabled hidden>Lista stavki</option>
+			</select>
+		</fieldset>
+	</div>
+</body>
+</html>

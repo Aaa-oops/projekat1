@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>Lazar Mancic Zadatak 2</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+	</style>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+	<select id="combobox">
+		<option value="0">Prvi pasus</option>
+		<option value="1">Drugi pasus</option>
+		<option value="2">Treci pasus</option>
+		<option value="3">Cetvrti pasus</option>
+		<option value="4">Peti pasus</option>
+		<option value="5">Sesti pasus</option>
+	</select>
+	<button id="prvo">Izbor</button>
+	<button id="drugo">Izbor od</button>
+	<button id="trece">Izbor do</button>
+	<button id="cetvrto">Resetuj</button>
+	<p>Ovo je prvi pasus</p>
+	<p>Ovo je drugi pasus</p>
+	<p>Ovo je treci pasus</p>
+	<p>Ovo je cetvrti pasus</p>
+	<p>Ovo je peti pasus</p>
+	<p>Ovo je sesti pasus</p>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#prvo").click(() => $('p:eq(' + $("#combobox").val() + ')').css("color", "red"));
+		$("#drugo").click(() => $('p:gt(' + $("#combobox").val() + ')').css("color", "red"));
+		$("#trece").click(() => $('p:lt(' + $("#combobox").val() + ')').css("color", "red"));
+		$("#cetvrto").click(() => $('p').css("color", "black"));
+	});
+	</script>
+</body>
+</html>

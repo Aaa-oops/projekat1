@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>Lazar Mancic Zadatak</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript">
+	function saberi() {
+		var a = parseInt(document.getElementById("broj1").value);
+		var b = parseInt(document.getElementById("broj2").value);
+		var c = a + b;
+		document.getElementById("rez").innerHTML = "Zbir brojeva je " + c;
+	}
+	</script>
+</head>
+<body>
+<label for="broj1">Prvi broj: </label>
+<input type="number" id="broj1" name="broj1">
+<br>
+<label for="broj2">Drugi broj: </label>
+<input type="number" id="broj2" name="broj2">
+<br>
+<button onclick="saberi()">Saberi</button>
+<br>
+<p id="rez"></p>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style media="screen">
+    #circle{
+      background-color: red;
+      width: 20px;
+      height: 20px;
+      border-radius:50%;
+    }
+    #circle2{
+      background-color: green;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+    #roundedClock{
+      width: 200px;
+      border-radius: 30px;
+      background-color: red;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      color: white;
+    }
+  </style>
+<script>
+var c = 0;
+var t;
+var timer_is_on = 0;
+
+function timedCount() {
+    document.getElementById("inputTxt").value = c;
+    c += 1;
+    t = setTimeout(function(){ timedCount() }, 1000);
+}
+
+function startCount() {
+    if (!timer_is_on) {
+        timer_is_on = 1;
+        timedCount();
+    }
+}
+
+function stopCount() {
+    clearTimeout(t);
+    timer_is_on = 0;
+}
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+var myVar;
+
+function myFunction() {
+    myVar = setTimeout(function(){
+      document.getElementById('circle').style.backgroundColor = "blue";
+      }, 5000);
+ }
+
+function myStopFunction() {
+    clearTimeout(myVar);
+}
+function changeIt(){
+  var color = document.getElementById('circle2')
+  if( color.style.backgroundColor == "red"){
+    color.style.backgroundColor = "green"
+  }
+  else{
+    color.style.backgroundColor ="red"
+  }
+}
+function colorChanging() {
+  setInterval(changeIt, 3000);
+}
+function digitalClock(){
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('roundedClock').innerHTML =
+  h + ":" + m + ":" + s;
+  var t = setTimeout(digitalClock, 500);
+  document.getElementById('button1').addEventListener("click", function(){
+    clearTimeout(t);
+  })
+}
+
+</script>
+</head>
+
+<body onload="colorChanging(), digitalClock()">
+<p>Prvi zadatak</p>
+<div id="txt"></div>
+<button type="button" name="button" onclick="startTime()">Pokreni Vreme</button>
+<br>
+<br>
+<br>
+<p>Drugi zadatak</p>
+<div id="circle"></div>
+<button type="button" name="button" onclick="myFunction()">Pokreni</button>
+<button type="button" name="button" onclick="myStopFunction()">Prekini</button>
+<br>
+<br>
+<br>
+<p>Treci zadatak</p>
+<div id="circle2"></div>
+<br>
+<br>
+<br>
+<p>Cetvrti zadatak</p>
+<div id="roundedClock"></div>
+<button type="button" name="button" id="button1">STOP</button>
+<br>
+<br>
+<br>
+<p>Peti zadatak</p>
+<button onclick="startCount()">Start</button>
+<input type="text" id="inputTxt">
+<button onclick="stopCount()">Stop</button>
+<p id="nesto"></p>
+</body>
+</html>

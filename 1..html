@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Lazar Mancic Zadatak</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript">
+		function poruka(){
+			alert("Pozdravna poruka");
+		}
+
+		function promeniSadrzaj(){
+			document.getElementById("prvidiv").innerHTML = "<ul><li>C#</li><li>Java</li></ul>";
+		}
+
+		// 4. Zadatak
+		function sakrijOtkri(){
+			var x = document.getElementById("prvidiv");
+			var y = document.getElementById("sakrivanje");
+			if (x.style.display === "none") {
+				x.style.display = "flex";
+				y.innerHTML = "Sakrij Krug";
+			} else {
+				x.style.display = "none";
+				y.innerHTML = "Otkrij Krug";
+			}
+		}
+
+		// 5. Zadatak
+		function promeniBoju(){
+			var x = document.getElementById("drugidiv");
+			if (x.style.backgroundColor === "blue") {
+				x.style.backgroundColor = "green";
+			} else {
+				x.style.backgroundColor = "blue";
+			}
+		}
+		
+		// 6. Zadatak
+		function prosiri(){
+			var x = document.getElementById("trecidiv");
+			var k = x.offsetWidth + 100;
+			x.style.width = k + "px";
+		}
+		function smanji(){
+			var x = document.getElementById("trecidiv");
+			var k = x.offsetWidth - 100;
+			x.style.width = k + "px";
+		}
+		
+		// 7. Zadatak
+		function proveriBroj(){
+			var rel = Math.floor((Math.random() * 10) + 1);
+			var mojbroj = document.getElementById("unosbroja").value;
+			if(rel == mojbroj){
+				alert("Cestitamo! Pogodili ste zamisljeni broj!");
+			}
+			else{
+				alert("Nazalost niste uspeli da pogodite zamisljeni broj!");
+			}
+		}
+	</script>
+	<style>
+		button{
+			width: 150px;
+			padding: 5px;
+			margin-bottom: 20px;
+		}
+		#prvidiv, #drugidiv, #trecidiv{
+			display: flex;
+			position: relative;
+			width: 200px;
+			height: 200px;
+			float: left;
+			border-radius: 50%;
+			background-color: red;
+			text-align: center;
+			align-items:center;
+			justify-content:center;
+			font-size: 20px;
+			margin: 10px;
+		}
+		#drugidiv{
+			background-color: green;
+		}
+		#trecidiv{
+			background-color: orange;
+		}
+		#cetvrtidiv{
+			display: flex;
+			clear: both;
+			position: relative;
+			float: left;
+			background-color: lightblue;
+			width: 300px;
+			height: 150px;
+			border-radius: 0 15% 0 0;
+			align-items:center;
+			justify-content:center;
+			flex-wrap: wrap;
+		}
+		#unosbroja {
+			margin-top: 20px;
+			width: 80%;
+		}
+	</style>
+</head>
+<body>
+	<button id="promena" onclick="poruka()">Poruka</button>
+	<br>
+	<button id="sadrzaj" onclick="promeniSadrzaj()">Promeni Sadrzaj</button>
+	<br>
+	<button id="sakrivanje" onclick="sakrijOtkri()">Sakrij Krug</button>
+	<br>
+	<button id="boja" onclick="promeniBoju()">Promeni Boju</button>
+	<br>
+	<div id="prvidiv">Ovo je prvi div</div>
+	<div id="drugidiv">Ovo je drugi div</div>
+	<div id="trecidiv" onmouseover="prosiri()" onmouseout="smanji()">Ovo je treci div</div><br/>
+	<div id="cetvrtidiv">
+	<input name="unosbroja" id="unosbroja" type="number" placeholder="Unesi Neki Broj">
+	<button id="pogodibroj" onclick="proveriBroj()">Pogodi broj</button>
+	</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cookies proba</title>
+  </head>
+  <body onload="proveriCookie()">
+  <div id="con">
+    <input type="text" name="username" id="username" placeholder="Unesi svoje ime">
+    <button name="button" id="button" onclick="pressBtn()">Sacuvaj</button>
+  </div>
+  <script type="text/javascript">
+  function postaviCookie(naziv,vrednost,brdana) {
+    var d = new Date();
+    d.setTime(d.getTime() + (brdana*24*60*60*1000));
+    var istice = "expires=" + d.toGMTString();
+    document.cookie = naziv + "=" + vrednost + ";" + istice + ";path=/";
+  }
+
+  function procitajCookie(naziv) {
+    var ime = naziv + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    console.log(ca);
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(ime) == 0) {
+        return c.substring(ime.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  function proveriCookie() {
+    var user = procitajCookie("username");
+    if (user != "") {
+      document.getElementById('con').innerHTML = "<h1>Dobrodosli nazad " + user + " !</h1>";
+    }
+  }
+
+  function pressBtn() {
+    var user = document.getElementById('username').value;
+    postaviCookie("username", user, 30);
+    document.getElementById('con').innerHTML = "<h1>Sacuvali ste ime: " + user + " !</h1>";
+  }
+  </script>
+  </body>
+</html>
